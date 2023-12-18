@@ -5,9 +5,17 @@ namespace SQLiteMaui
 {
     public static class MauiProgram
     {
+        public static string localFolderPath = "";
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+            string folderName = "Internal-Storage";
+            string localAppDataPath = AppDomain.CurrentDomain.BaseDirectory;
+            localFolderPath = Path.Combine(localAppDataPath, folderName);
+            if (!Directory.Exists(localFolderPath))
+            {
+                Directory.CreateDirectory(localFolderPath);
+            }
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>

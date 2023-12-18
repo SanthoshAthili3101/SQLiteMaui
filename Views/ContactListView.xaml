@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SQLiteMaui.Views.ContactListView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Contact List View">
+    <StackLayout>
+
+        <Button
+            x:Name="addNewContact"
+            Background="Green"
+            Clicked="addNewContact_Clicked"
+            Text="+Add" />
+        <ListView
+            x:Name="personListView"
+            ItemSelected="personListView_ItemSelected"
+            ItemsSource="{Binding PersonContacts}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <StackLayout>
+                                <Label FontAttributes="Bold" Text="{Binding Name}" />
+                                <Label Text="{Binding Description}" />
+                                <Label Text="{Binding Gender}" />
+                            </StackLayout>
+                            <Button
+                                x:Name="deleteButon"
+                                Background="DarkRed"
+                                Clicked="deleteButon_Clicked"
+                                HorizontalOptions="EndAndExpand"
+                                CommandParameter="{Binding .}"
+                                Text="Delete" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</ContentPage>

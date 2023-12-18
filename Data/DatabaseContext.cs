@@ -19,10 +19,7 @@ namespace SQLiteMaui.Data
         
         private void OpenConnection()
         {
-            string folderName = "Internal-Storage";
-            string localAppDataPath = AppDomain.CurrentDomain.BaseDirectory;
-            string localFolderPath = Path.Combine(localAppDataPath, folderName);
-            string DbPath = Path.Combine(localFolderPath, DbName);
+            string DbPath = Path.Combine(MauiProgram.localFolderPath, DbName);
 
             Database = new SQLiteConnection(DbPath);
         }
